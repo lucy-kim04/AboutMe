@@ -5,42 +5,39 @@ import { motion } from 'framer-motion';
 
 export default function HeroTerminal() {
   const [lines, setLines] = useState<string[]>([]);
+  const [showButtons, setShowButtons] = useState(false);
 
   useEffect(() => {
     const sequence = async () => {
-      setLines(['> ssh heeju.dev']);
-      await wait(1000);
-
-      setLines((prev) => [...prev, 'Connecting...']);
-      await wait(1200);
-
-      setLines((prev) => [...prev.slice(0, -1), 'Connected ✅']);
-      await wait(800);
-
-      setLines((prev) => [...prev, 'Welcome to 김희주의 포트폴리오입니다.']);
-      await wait(1000);
-
-      setLines((prev) => [...prev, '사용자의 니즈를 고민하고,']);
-      await wait(1000);
-
-      setLines((prev) => [
-        ...prev,
-        '더 좋은 방향을 함께 모색할 줄 아는 개발자입니다.',
-      ]);
-      await wait(1000);
-
-      setLines((prev) => [
-        ...prev,
+      const newLines = [
+        '> ssh heeju.dev',
+        'Connecting...',
+        'Connected ✅',
+        'Welcome to 김희주의 포트폴리오입니다.',
+        '현재 웹 개발을 공부 중인',
+        '열정이 있는 개발자입니다.',
         '현재는 Next.js와 Supabase 기반의 콘텐츠 플랫폼을 만들고 있어요.',
-      ]);
+      ];
+
+      for (let i = 0; i < newLines.length; i++) {
+        if (i === 2) {
+          setLines((prev) => [...prev.slice(0, -1), newLines[i]]); // 덮어쓰기!
+        } else {
+          setLines((prev) => [...prev, newLines[i]]);
+        }
+
+        await wait(1000);
+      }
+      await wait(200);
+      setShowButtons(true);
     };
 
     sequence();
   }, []);
 
   return (
-    <section className="flex flex-col justify-center items-center h-screen px-4">
-      <div className="bg-black/80 border border-zinc-700 rounded-xl p-6 w-full max-w-2xl shadow-xl font-mono text-green-400">
+    <section className="h-screen flex flex-col justify-center items-center px-4 bg-black text-white font-mono">
+      <div className="bg-black/80 border border-zinc-700 rounded-xl p-6 w-full max-w-2xl shadow-xl">
         {lines.map((line, index) => (
           <motion.p
             key={index}
@@ -53,29 +50,45 @@ export default function HeroTerminal() {
           </motion.p>
         ))}
 
-        {lines.length === 7 && (
-          <div className="mt-6 flex gap-4">
-            <a
-              href="https://github.com/lucy-kim04"
-              target="_blank"
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500 transition"
+        {showButtons && (
+          <>
+            <motion.div
+              className="mt-6 flex gap-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              GitHub
-            </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              className="border border-green-600 text-green-400 px-4 py-2 rounded hover:bg-green-600 hover:text-white transition"
+              <a
+                href="https://github.com/lucy-kim04"
+                target="_blank"
+                className="bg-white text-black px-4 py-2 rounded hover:bg-gray-300 transition"
+              >
+                GitHub
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
+              >
+                이력서 보기
+              </a>
+              <a
+                href="#about"
+                className="text-white underline hover:text-gray-300 transition"
+              >
+                Contact →
+              </a>
+            </motion.div>
+
+            <motion.p
+              className="mt-6 text-sm text-zinc-400"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              이력서 보기
-            </a>
-            <a
-              href="#contact"
-              className="text-green-400 underline hover:text-white transition"
-            >
-              Contact →
-            </a>
-          </div>
+              스크롤해서 아래 내용도 확인해보세요 ↓
+            </motion.p>
+          </>
         )}
       </div>
     </section>

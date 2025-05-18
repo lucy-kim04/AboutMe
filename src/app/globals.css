@@ -4,5 +4,5 @@
 
 html,
 body {
-  @apply bg-zinc-900 text-green-400 font-mono;
+  @apply bg-zinc-900 text-white font-mono;
 }

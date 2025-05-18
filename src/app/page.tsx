@@ -1,8 +1,11 @@
 import HeroTerminal from '@/components/features/HeroTerminal';
+import AboutSection from '@/components/features/AboutSection';
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-green-400">
+    <main>
       <HeroTerminal />
+      <AboutSection />
     </main>
   );
 }
