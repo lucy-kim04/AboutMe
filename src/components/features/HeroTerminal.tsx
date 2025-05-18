@@ -13,7 +13,7 @@ export default function HeroTerminal() {
         '> ssh heeju.dev',
         'Connecting...',
         'Connected ✅',
-        'Welcome to 김희주의 포트폴리오입니다.',
+        'Welcome to 김희주의 포트폴리오',
         '현재 웹 개발을 공부 중인',
         '열정이 있는 개발자입니다.',
         '현재는 Next.js와 Supabase 기반의 콘텐츠 플랫폼을 만들고 있어요.',
