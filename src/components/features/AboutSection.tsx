@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen px-4 py-20 bg-zinc-950 text-white font-mono"
+      className="min-h-screen px-4 py-20 text-white font-mono"
     >
       <div className="max-w-3xl mx-auto">
         <motion.h2
@@ -38,14 +38,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
           viewport={{ once: true }}
-        >
-          <span>🛠️ JavaScript</span>
-          <span>⚙️ TypeScript</span>
-          <span>⚛️ React / Next.js</span>
-          <span>🎨 Tailwind CSS</span>
-          <span>🧱 Supabase</span>
-          <span>🧪 Git / GitHub</span>
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );
