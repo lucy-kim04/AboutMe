@@ -26,10 +26,9 @@ export default function AboutSection() {
           transition={{ delay: 0.2, duration: 0.5 }}
           viewport={{ once: true }}
         >
-          안녕하세요, 김희주입니다. 사용자 경험을 고려하며, 더 나은 방향을
-          고민할 줄 아는 프론트엔드 개발자입니다. JavaScript, TypeScript,
-          Next.js를 중심으로 웹 애플리케이션을 만들고 있으며, Supabase와 같은
-          백엔드 서비스도 다뤄본 경험이 있습니다.
+          안녕하세요, 김희주입니다. JavaScript, TypeScript, Next.js를 중심으로
+          웹 애플리케이션을 만들고 있으며, 정보보안에 대해 추가로 공부 중입니다.
+          임시 내용 블라블라
         </motion.p>
 
         <motion.div
